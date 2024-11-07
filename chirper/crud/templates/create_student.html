@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    CRUD Student
+{% endblock %}
+
+{% block content %}
+   <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if form.instance.pk %}
+            <input type="submit" value="Save Changes">
+        {% else %}
+            <input type="submit" value="Register Student">
+        {% endif %}
+   </form>
+{% endblock %}

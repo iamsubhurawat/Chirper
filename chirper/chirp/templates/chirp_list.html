@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Chirps
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5"> Welcome to Chirper! </h1>
+    <a class="btn btn-primary mb-5" href="{% url 'chirp_create' %}"> Chirp a little... </a>
+    <div class="container row gap-3">
+        {% for chirp in chirps %}
+            <h1 class="text-center mt-5"> {{chirp.user.email}} </h1>
+            <div class="card" style="width: 18rem;">
+                <img src="{{chirp.photo.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{chirp.user}}</h5>
+                    <p class="card-text">{{chirp.text}}</p>
+                    {% if chirp.user == user %}   
+                        <a href="{% url 'chirp_edit' chirp.id %}" class="btn btn-primary">Edit</a>
+                        <a href="{% url 'chirp_delete' chirp.id %}" class="btn btn-danger">Delete</a>
+                    {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

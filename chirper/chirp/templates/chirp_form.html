@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Edit
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-center mt-5"> Welcome to Chirper! </h1>
+
+    <h2>
+        {% if form.instance.pk %}
+        Edit Form
+        {% else %}
+        Create Form
+        {% endif %}
+    </h2>
+
+    <form method="post" enctype="multipart/form-data" class="form">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-danger" type="submit">Submit</button>
+    </form>
+
+    <a href="{% url 'chirp_list' %}"> Back to chirps! </a>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    CRUD Delete Student
+{% endblock %}
+
+{% block content %}
+   <form method="post" class="form">
+        {% csrf_token %}
+        Are you sure that you want to delete the student data ?
+        <input type="submit" value="Yes" class="btn btn-danger">
+        <a href="{% url 'crud_view_student' %}" class="btn btn-secondary"> Cancel </a>
+   </form>
+{% endblock %}
